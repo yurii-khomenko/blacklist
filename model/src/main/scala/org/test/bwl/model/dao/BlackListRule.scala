@@ -1,4 +1,4 @@
-package org.test.bwl.model
+package org.test.bwl.model.dao
 
 import com.datastax.driver.mapping.annotations.{PartitionKey, Table}
 
