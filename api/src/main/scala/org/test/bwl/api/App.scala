@@ -9,7 +9,10 @@ object App extends HttpApp with DB {
 
    // println(conf.getList("client.db.contact.points"))
 
-    println(">>>" + session.getState.getConnectedHosts)
+//    println(">>>" + session.getState.getConnectedHosts)
+
+    println(">>>" + configAccessor.getAll.all)
+    println(">>>" + userAccessor.getAll.all)
 
     //startServer("0.0.0.0", 8080)
   }
