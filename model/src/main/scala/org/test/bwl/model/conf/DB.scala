@@ -2,6 +2,7 @@ package org.test.bwl.model.conf
 
 import com.datastax.driver.core.Cluster
 import com.datastax.driver.mapping.MappingManager
+import com.typesafe.config.ConfigFactory
 import org.test.bwl.model.dao.{ConfigAccessor, UserAccessor}
 
 import scala.collection.JavaConverters._
@@ -21,8 +22,9 @@ trait DB extends Conf {
 
   private val session = cluster.connect("bwl_dict")
 
-  val configAccessor = new MappingManager(session).createAccessor(classOf[ConfigAccessor])
-  val userAccessor = new MappingManager(session).createAccessor(classOf[UserAccessor])
+  private val configAccessor = new MappingManager(session).createAccessor(classOf[ConfigAccessor])
+  private val userAccessor = new MappingManager(session).createAccessor(classOf[UserAccessor])
 
-
+  val configs = ConfigFactory.parseMap(configAccessor.getAll.all.asScala.map(config => (config.key, config.value)).toMap.asJava)
+  val users = userAccessor.getAll.all.asScala.map(user => (user.login, user)).toMap
 }

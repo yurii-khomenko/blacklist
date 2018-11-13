@@ -11,8 +11,11 @@ object App extends HttpApp with DB {
 
 //    println(">>>" + session.getState.getConnectedHosts)
 
-    println(">>>" + configAccessor.getAll.all)
-    println(">>>" + userAccessor.getAll.all)
+//    println(">>>" + configAccessor.getAll.all)
+//    println(">>>" + userAccessor.getAll.all)
+
+    println(">>>" + configs)
+    println(">>>" + users)
 
     //startServer("0.0.0.0", 8080)
   }
