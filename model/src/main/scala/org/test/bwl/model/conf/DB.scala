@@ -12,15 +12,13 @@ trait DB extends Conf {
   private val user = conf.getString("client.db.user")
   private val password = conf.getString("client.db.password")
 
-  private val cluster = Cluster.builder()
+  private val cluster = Cluster.builder
     .addContactPoints(contactPoints: _*)
     .withPort(port)
     .withCredentials(user, password)
-    .build()
+    .build
 
    val session = cluster.connect("bwl_dict")
-
-
 
 //  private val configAccessor = new MappingManager(session).createAccessor(classOf[ConfigAccessor])
 //  private val userAccessor = new MappingManager(session).createAccessor(classOf[UserAccessor])
