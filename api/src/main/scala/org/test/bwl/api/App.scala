@@ -7,15 +7,12 @@ object App extends HttpApp with DB {
 
   def main(args: Array[String]): Unit = {
 
-   // println(conf.getList("client.db.contact.points"))
+//    println(">>>" + configs)
+//    println(">>>" + users)
 
-//    println(">>>" + session.getState.getConnectedHosts)
+//    println(blackListRuleMapper.get("380670000001"))
 
-//    println(">>>" + configAccessor.getAll.all)
-//    println(">>>" + userAccessor.getAll.all)
-
-    println(">>>" + configs)
-    println(">>>" + users)
+    println(blackListRuleAccessor.get("380670000001").one)
 
     //startServer("0.0.0.0", 8080)
   }
