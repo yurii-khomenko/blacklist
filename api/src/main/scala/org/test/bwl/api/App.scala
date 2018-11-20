@@ -5,19 +5,13 @@ import org.test.bwl.model.conf.DB
 
 object App extends HttpApp with DB {
 
-  def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit =
+    startServer("0.0.0.0", 8080)
 
-//    println(">>>" + configs)
-//    println(">>>" + users)
+  override def routes = path("api" / "rules" / LongNumber) { msisdn =>
 
-//    println(blackListRuleMapper.get("380670000001"))
-
-    println(blackListRuleAccessor.get("380670000001").one)
-
-    //startServer("0.0.0.0", 8080)
+    complete(s"Hello, msisdn: $msisdn")
   }
 
-  override def routes = pathSingleSlash {
-    complete("Hello Akka!")
-  }
+  // GET  http://127.0.0.1:8080/api/rules/${msisdn}
 }
