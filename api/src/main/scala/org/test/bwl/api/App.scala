@@ -10,8 +10,20 @@ object App extends HttpApp with DB {
 
   override def routes = path("api" / "rules" / LongNumber) { msisdn =>
 
-    complete(s"Hello, msisdn: $msisdn")
+    val rule = blackListRuleAccessor.get(msisdn).one
+
+    complete(s"Hello, msisdn: $msisdn, rule: $rule")
   }
 
   // GET  http://127.0.0.1:8080/api/rules/${msisdn}
+
+  // GET  http://127.0.0.1:8080/api/rules/${msisdn}/${sn}
+
+  /*
+
+    {
+      result: false
+    }
+
+   */
 }

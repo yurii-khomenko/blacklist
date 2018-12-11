@@ -13,8 +13,8 @@ class DBTest extends Config with DB {
 
     s"1. Get BlackListRule" in {
 
-      val expected = BlackListRule("380670000001", Set("777", "bigtits", "pravexbank").asJava)
-      val actual = blackListRuleAccessor.get("380670000001").one
+      val expected = BlackListRule(380670000001L, Set("777", "bigtits", "pravexbank").asJava)
+      val actual = blackListRuleAccessor.get(380670000001L).one
 
       actual shouldEqual expected
     }
