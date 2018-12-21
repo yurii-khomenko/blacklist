@@ -3,12 +3,13 @@ package org.test.bwl.api.auth
 import akka.http.scaladsl.server.directives.Credentials
 import akka.http.scaladsl.server.directives.Credentials.Provided
 import akka.http.scaladsl.server.{Directives, Route}
+import org.test.bwl.model.conf.DB
 import org.test.bwl.model.dao.User
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-trait BasicAuth extends Directives {
+trait BasicAuth extends DB with Directives {
 
   def users: Map[String, User]
 
