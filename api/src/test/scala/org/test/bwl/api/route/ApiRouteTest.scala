@@ -1,7 +1,6 @@
 package org.test.bwl.api.route
 
 import akka.http.scaladsl.model.StatusCodes._
-import akka.http.scaladsl.server.Route
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.test.bwl.api.Config
