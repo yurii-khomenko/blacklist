@@ -15,11 +15,12 @@ class ApiRouteTest extends Config {
 
     s"7. Return OK code with right body for GET requests to $uri with valid credentials" in {
 
-      Get(uri) ~>
+      Get(s"$uri?msisdn=380670000001&sn=777") ~>
         addCredentials(validClientCredentials) ~>
-        Route.seal(routes) ~> check {
+        routes ~> check {
 
         status shouldEqual OK
+        entityAs[String] should include ("false")
       }
     }
   }
