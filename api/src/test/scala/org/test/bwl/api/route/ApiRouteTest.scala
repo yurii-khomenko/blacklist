@@ -13,7 +13,6 @@ class ApiRouteTest extends Config {
 
   s"The hash system with REST resource $uri" should {
 
-
     s"7. Return OK code with right body for GET requests to $uri with valid credentials" in {
 
       Get(uri) ~>
