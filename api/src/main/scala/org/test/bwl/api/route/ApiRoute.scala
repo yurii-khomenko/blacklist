@@ -15,9 +15,8 @@ trait ApiRoute extends BasicAuth with DB {
 
         parameters('msisdn.as[Long], 'sn) { (msisdn, sn) =>
 
-          val rule = blackListRuleAccessor.get(msisdn).one //NPE! if msisdn not found
-
-          val pass = !rule.shortNumbers.contains(sn)
+          val pass = Option(blackListRuleAccessor.get(msisdn).one)
+            .forall(result => !result.shortNumbers.contains(sn))
 
           complete(HttpEntity(`application/json`, s"""{"passed":$pass}"""))
         }
