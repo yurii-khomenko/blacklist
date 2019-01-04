@@ -19,5 +19,6 @@ trait Config extends WordSpec with Matchers with ScalatestRouteTest with ApiRout
   val validMetricCredentials = BasicHttpCredentials("prometeus", "prometeus-password")
 
   val msisdn = 380670000001L
-  val sn = 777
+  val snInBlackList = 777
+  val snOutBlackList = 5675
 }

@@ -62,12 +62,23 @@ class ApiRouteTest extends Config {
 
     s"5. Return OK code with right body for GET requests to $uri with valid credentials" in {
 
-      Get(s"$uri?msisdn=$msisdn&sn=$sn") ~>
+      Get(s"$uri?msisdn=$msisdn&sn=$snInBlackList") ~>
         addCredentials(validClientCredentials) ~>
         routes ~> check {
 
         status shouldEqual OK
         entityAs[String] should include ("false")
+      }
+    }
+
+    s"6. Return OK code with right body for GET requests to $uri with valid credentials" in {
+
+      Get(s"$uri?msisdn=$msisdn&sn=$snOutBlackList") ~>
+        addCredentials(validClientCredentials) ~>
+        routes ~> check {
+
+        status shouldEqual OK
+        entityAs[String] should include ("true")
       }
     }
   }
